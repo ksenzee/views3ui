@@ -102,7 +102,17 @@ fieldset fieldset {
  * Dependent options are identified in CTools dependent.js
  */
 
-.dependent-options {
+.views-admin-dependent .form-type-checkboxes,
+.views-admin-dependent .form-type-radios,
+.views-admin-dependent .dependent-options .form-type-select,
+.views-admin-dependent .dependent-options .form-type-textfield {
+  margin-bottom: 12px;
+  margin-top: 4px;
+}
+
+.views-admin-dependent .dependent-options {
+  margin-top: 5px;
+  margin-bottom: 5px;
   margin-left: 18px;
 }
 

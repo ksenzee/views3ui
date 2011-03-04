@@ -153,10 +153,6 @@
 
 /* @group Forms */
 
-.views-admin-dependent {
-  padding-left: 17px;
-}
-
 fieldset.box-padding {
   border: none;
 }
@@ -845,7 +841,8 @@ div.views-filterable-options .form-type-checkbox .description {
   border-width: 1px;
   max-height: 210px;
   overflow: auto;
-  padding: 5px 5px 0;
+  margin-top: 5px;
+  padding: 0 5px;
   width: 190px;
 }
 
@@ -950,16 +947,9 @@ div.views-filterable-options .form-type-checkbox .description {
 #edit-options-exception {
   float: right;
   width: 250px;
-  margin-top: 0pt;
+  margin-top: 4px;
 }
 
-#edit-options-argument-present .form-item {
-  margin-top: 10px;
-}
-
-#edit-options-exception .form-type-textfield, #edit-options-argument-present .form-type-textfield {
-  margin-top: 0;
-}
 
 /* @end */
 
