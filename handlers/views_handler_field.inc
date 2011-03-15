@@ -315,15 +315,21 @@ class views_handler_field extends views_handler {
       ),
     );
     $options['element_type'] = array('default' => '');
+    $options['element_type_enable'] = array('default' => FALSE);
     $options['element_class'] = array('default' => '');
+    $options['element_class_enable'] = array('default' => FALSE);
 
     $options['element_label_type'] = array('default' => '');
+    $options['element_label_type_enable'] = array('default' => FALSE);
     $options['element_label_class'] = array('default' => '');
+    $options['element_lavel_class_enable'] = array('default' => FALSE);
     $options['element_label_colon'] = array('default' => TRUE);
 
     $options['element_wrapper_type'] = array('default' => '');
+    $options['element_wrapper_type_enable'] = array('default' => FALSE);
     $options['element_wrapper_class'] = array('default' => '');
-
+    $options['element_wrapper_class_enable'] = array('default' => FALSE);
+    
     $options['element_default_classes'] = array('default' => TRUE);
 
     $options['empty'] = array('default' => '', 'translatable' => TRUE);
@@ -344,6 +350,7 @@ class views_handler_field extends views_handler {
       '#type' => 'checkbox',
       '#title' => t('Wrap field in HTML'),
       '#fieldset' => 'style_settings',
+      '#default_value' => $this->options['element_type_enable'],
     );
     $form['element_type'] = array(
       '#title' => t('HTML element'),
@@ -362,7 +369,8 @@ class views_handler_field extends views_handler {
       '#type' => 'checkbox',
       '#title' => t('Create a CSS class'),
       '#fieldset' => 'style_settings',
-      '#process' => array('ctools_dependent_process'),
+      '#default_value' => $this->options['element_class_enable'],
+      '#process' => array('ctools_dependent_process'),      
       '#dependency' => array(
         'edit-options-element-type-enable' => array(1)
       ),
@@ -412,6 +420,7 @@ class views_handler_field extends views_handler {
       '#type' => 'checkbox',
       '#title' => t('Wrap label in HTML'),
       '#fieldset' => 'style_settings',
+      '#default_value' => $this->options['element_label_type_enable'],
     );
 
     $form['element_label_type'] = array(
@@ -431,6 +440,7 @@ class views_handler_field extends views_handler {
       '#type' => 'checkbox',
       '#title' => t('Create a CSS class'),
       '#fieldset' => 'style_settings',
+      '#default_value' => $this->options['element_label_class_enable'],
       '#process' => array('ctools_dependent_process'),
       '#dependency' => array(
         'edit-options-element-label-type-enable' => array(1)
@@ -453,6 +463,7 @@ class views_handler_field extends views_handler {
       '#type' => 'checkbox',
       '#title' => t('Wrap field and label in HTML'),
       '#fieldset' => 'style_settings',
+      '#default_value' => $this->options['element_wrapper_type_enable'],
     );
 
     $form['element_wrapper_type'] = array(
@@ -472,6 +483,7 @@ class views_handler_field extends views_handler {
       '#type' => 'checkbox',
       '#title' => t('Create a CSS class'),
       '#fieldset' => 'style_settings',
+      '#default_value' => $this->options['element_wrapper_class_enable'],
       '#process' => array('ctools_dependent_process'),
       '#dependency' => array(
         'edit-options-element-wrapper-type-enable' => array(1)
