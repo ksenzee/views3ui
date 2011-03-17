@@ -1153,11 +1153,6 @@ function views_ui_edit_form($form, &$form_state, $view, $display_id = NULL) {
       '#type' => 'submit',
       '#value' => t('Preview'),
       '#attributes' => array('class' => array('arguments-preview')),
-      '#states' => array(
-        'visible' => array(   // action to take.
-          ':input[name="displays[settings][settings_content][preview_controls][live_preview]"]' => array('checked' => FALSE),
-        ),
-      ),
       '#id' => 'preview-submit',
       '#submit' => array('views_ui_edit_form_submit_preview'),
       '#ajax' => array(
@@ -1171,6 +1166,13 @@ function views_ui_edit_form($form, &$form_state, $view, $display_id = NULL) {
       //   we may need to split Preview into a separate form.
       '#process' => array_merge(array('views_ui_default_button'), element_info_property('submit', '#process', array())),
     );
+    if (variable_get('views_ui_disable_hide_preview_button', FALSE)) {
+      $form['displays']['settings']['settings_content']['preview_controls']['button']['#states'] = array(
+        'visible' => array(   // action to take.
+          ':input[name="displays[settings][settings_content][preview_controls][live_preview]"]' => array('checked' => FALSE),
+        ),
+      );
+    }
 
     // The live preview.
     // @todo: Figure out whether $view->preview and $view->editing might be enough already.
@@ -4556,6 +4558,12 @@ function views_ui_admin_settings_defaults() {
     '#title' => t('Disable automatic live preview'),
     '#description' => t("Don't automatically update the preview. This can speed up the editing of views a bit."),
     '#default_value' => variable_get('views_ui_disable_live_preview', 0),
+  );
+  $form['edit_view_form']['views_ui_disable_hide_preview_button'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide preview button'),
+    '#description' => t('Hide the preview button when automatic live preview is checked'),
+    '#default_value' => variable_get('views_ui_disable_hide_preview_button', FALSE),
   );
 
 
